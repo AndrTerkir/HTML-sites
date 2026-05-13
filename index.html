@@ -2,480 +2,303 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Индивидуальный план развития: Lua Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ИПР Lua Developer — Речкунов Андрей</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
+        /* Минимальные стили — только для читаемости, без дизайна */
         body {
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background: #eef2f7;
-            margin: 0;
-            padding: 30px 20px;
-            color: #1e2a3a;
+            font-family: 'Times New Roman', Times, serif;
+            margin: 20px;
+            background: white;
+            color: black;
         }
-
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             background: white;
-            border-radius: 28px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            overflow: hidden;
-            padding: 30px 32px 48px;
-            transition: all 0.2s;
+            padding: 10px;
         }
-
-        h1 {
-            font-size: 1.9rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #0b2b3d, #1d5a6d);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-top: 0;
-            margin-bottom: 0.25rem;
-            letter-spacing: -0.3px;
-        }
-
-        .subhead {
-            color: #2c6979;
-            border-left: 4px solid #2c6979;
-            padding-left: 16px;
-            margin: 8px 0 28px 0;
-            font-weight: 450;
-            font-size: 1rem;
-        }
-
-        .badge-lua {
-            display: inline-block;
-            background: #0f4c5c;
-            color: white;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 4px 12px;
-            border-radius: 40px;
-            margin-bottom: 20px;
-        }
-
-        section {
-            margin-bottom: 48px;
-        }
-
-        h2 {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin: 0 0 16px 0;
-            color: #0f4c5c;
-            border-bottom: 3px solid #cbdde6;
-            padding-bottom: 8px;
-        }
-
-        .table-wrapper {
-            overflow-x: auto;
-            border-radius: 18px;
-            border: 1px solid #dce5ec;
-            background: #fff;
-            margin-bottom: 24px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9rem;
-            min-width: 680px;
-        }
-
-        th {
-            background-color: #e9f0f4;
-            color: #144d5e;
-            font-weight: 700;
-            padding: 14px 12px;
-            border-bottom: 2px solid #cbdde6;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        td {
-            border-bottom: 1px solid #e2e8f0;
-            padding: 12px 10px;
-            vertical-align: top;
-            line-height: 1.4;
-        }
-
-        .category-cell {
-            background-color: #f8fafc;
-            font-weight: 600;
-            color: #1e5a6b;
-            width: 18%;
-        }
-
-        .skill-cell {
-            font-weight: 500;
-            color: #1e2f3a;
-            width: 35%;
-        }
-
-        .editable-cell {
-            background-color: #fffdf7;
-            cursor: text;
-            transition: background 0.1s ease;
-            word-break: break-word;
-            min-width: 80px;
-        }
-
-        .editable-cell[contenteditable="true"]:hover {
-            background-color: #fff3cf;
-        }
-        .editable-cell[contenteditable="true"]:focus {
-            background-color: #fff6e0;
-            outline: 1px solid #2c8b9e;
-        }
-
-        .plan-table th, .plan-table td {
-            text-align: left;
-        }
-        .plan-table .editable-cell {
-            text-align: left;
-        }
-
-        .criteria-table td:first-child {
-            font-weight: 600;
-            background-color: #f9fbfd;
-            width: 55%;
-        }
-
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-top: 30px;
-            justify-content: center;
-        }
-
-        .btn {
-            border: none;
-            background: #eef2f7;
-            padding: 12px 28px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border-radius: 60px;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-            font-family: inherit;
-        }
-
-        .btn-primary {
-            background: #1f6e82;
-            color: white;
-            box-shadow: 0 4px 10px rgba(31,110,130,0.25);
-        }
-        .btn-primary:hover {
-            background: #0f5a6b;
-            transform: translateY(-2px);
-        }
-        .btn-secondary {
-            background: white;
-            border: 1.5px solid #cbdde6;
-            color: #1f6e82;
-        }
-        .btn-secondary:hover {
-            background: #e3f0f5;
-            border-color: #1f6e82;
-        }
-
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 0.75rem;
-            color: #6c8b9b;
-            border-top: 1px solid #dce5ec;
-            padding-top: 24px;
-        }
-
-        .note {
-            background: #f0f6fa;
-            padding: 12px 20px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: #2c6979;
+        h1, h2 {
+            font-weight: normal;
             margin-top: 20px;
+            margin-bottom: 10px;
         }
-
-        @media (max-width: 700px) {
-            .container {
-                padding: 20px 18px;
-            }
-            th, td {
-                padding: 8px 6px;
-                font-size: 0.8rem;
-            }
-            h1 {
-                font-size: 1.5rem;
-            }
+        h1 {
+            font-size: 22pt;
+        }
+        h2 {
+            font-size: 18pt;
+            border-bottom: 1px solid #aaa;
+            padding-bottom: 4px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+            background: white;
+        }
+        th, td {
+            border: 1px solid #000000;
+            padding: 8px 10px;
+            vertical-align: top;
+            background: white;
+        }
+        th {
+            font-weight: bold;
+            background: #f5f5f5; /* очень светлый серый для заголовков, но не дизайн */
+            text-align: center;
+        }
+        .category-cell {
+            font-weight: bold;
+        }
+        .editable-cell {
+            background-color: #ffffff;
+        }
+        .note {
+            margin: 15px 0;
+            font-size: 11pt;
+            border-left: 2px solid #ccc;
+            padding-left: 12px;
+        }
+        .btn {
+            font-family: inherit;
+            font-size: 14px;
+            padding: 6px 16px;
+            margin: 8px 8px 0 0;
+            background: #e0e0e0;
+            border: 1px solid #7f7f7f;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #ccc;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 10pt;
+            text-align: left;
+            border-top: none;
         }
     </style>
 </head>
 <body>
 <div class="container" id="exportContent">
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-        <div>
-            <div class="badge-lua">🚀 индивидуальная траектория роста</div>
-            <h1>📘 План развития Lua разработчика</h1>
-            <div class="subhead">Реестр навыков + ИПР на 6–12 месяцев | формат: самоаудит и измеримые цели</div>
-        </div>
+    <!-- Информация об исполнителе -->
+    <div style="margin-bottom: 20px;">
+        <p><strong>Выполнил:</strong> Речкунов Андрей<br>
+        <strong>Группа:</strong> 1-ИСП9-75</p>
     </div>
+    <h1>Индивидуальный план развития (ИПР)<br>на 6–12 месяцев — Junior Lua Developer</h1>
+    <hr />
 
-    <!-- ЧАСТЬ 1: РЕЕСТР НАВЫКОВ (Lua / Software Development) -->
-    <section>
-        <h2>📊 1. Реестр навыков (Lua Developer)</h2>
-        <div class="table-wrapper">
-            <table id="skillsTable">
-                <thead>
-                <tr><th>Категория</th><th>Конкретные навыки</th><th style="width: 12%">Моя оценка (1–5)</th><th style="width: 12%">Целевой уровень (через 6 мес)</th></tr>
-                </thead>
-                <tbody>
-                    <!-- Языки и парадигмы -->
-                    <tr><td class="category-cell">Языки и парадигмы</td><td class="skill-cell">Lua (синтаксис, таблицы, метатаблицы, замыкания, coroutines)</td><td class="editable-cell" contenteditable="true">2</td><td class="editable-cell" contenteditable="true">3</td></tr>
-                    <tr><td class="category-cell">Языки и парадигмы</td><td class="skill-cell">ООП через метатаблицы / прототипное наследование</td><td class="editable-cell" contenteditable="true">2</td><td class="editable-cell" contenteditable="true">3</td></tr>
-                    <tr><td class="category-cell">Языки и парадигмы</td><td class="skill-cell">Функциональное программирование (замыкания, функции высшего порядка)</td><td class="editable-cell" contenteditable="true">2</td><td class="editable-cell" contenteditable="true">3</td></tr>
-                    <tr><td class="category-cell">Языки и парадигмы</td><td class="skill-cell">Асинхронное программирование (корутины, event loop, колбэки)</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
-                    <!-- Архитектура и БД -->
-                    <tr><td class="category-cell">Архитектура и БД</td><td class="skill-cell">Алгоритмы и структуры данных (массивы, словари, очереди, графы)</td><td class="editable-cell" contenteditable="true">2</td><td class="editable-cell" contenteditable="true">3</td></tr>
-                    <tr><td class="category-cell">Архитектура и БД</td><td class="skill-cell">Паттерны проектирования (состояние, стратегия, посетитель на Lua)</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
-                    <tr><td class="category-cell">Архитектура и БД</td><td class="skill-cell">Взаимодействие с БД (SQLite, LuaSQL, Redis + lua-resty)</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
-                    <tr><td class="category-cell">Архитектура и БД</td><td class="skill-cell">API design (REST через OpenResty, обработка запросов)</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
-                    <!-- Инструменты и практики -->
-                    <tr><td class="category-cell">Инструменты и практики</td><td class="skill-cell">Git / GitHub (ветки, PR, collaborative workflow)</td><td class="editable-cell" contenteditable="true">2</td><td class="editable-cell" contenteditable="true">3</td></tr>
-                    <tr><td class="category-cell">Инструменты и практики</td><td class="skill-cell">Docker (запуск Lua-окружения, OpenResty, контейнеризация)</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
-                    <tr><td class="category-cell">Инструменты и практики</td><td class="skill-cell">Знание ОС (Linux — командная строка, процессы, окружение)</td><td class="editable-cell" contenteditable="true">2</td><td class="editable-cell" contenteditable="true">3</td></tr>
-                    <tr><td class="category-cell">Инструменты и практики</td><td class="skill-cell">Написание тестов (busted, luatest, интеграционные тесты)</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
-                    <tr><td class="category-cell">Инструменты и практики</td><td class="skill-cell">CI/CD базовое понимание (github actions для Lua)</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
-                    <!-- Soft Skills -->
-                    <tr><td class="category-cell">Soft Skills</td><td class="skill-cell">Решение сложных задач (декомпозиция, поиск информации)</td><td class="editable-cell" contenteditable="true">2</td><td class="editable-cell" contenteditable="true">3</td></tr>
-                    <tr><td class="category-cell">Soft Skills</td><td class="skill-cell">Code Review (анализ Lua кода, конструктивная критика)</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
-                    <tr><td class="category-cell">Soft Skills</td><td class="skill-cell">Работа с легаси-кодом (рефакторинг, чтение чужого кода)</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="note">✨ <strong>Как заполнять:</strong> кликните на любую ячейку с оценкой или целевым уровнем и измените цифру (1–5). Все изменения сохранятся при скачивании в Word.</div>
-    </section>
+    <!-- ЧАСТЬ 1: РЕЕСТР НАВЫКОВ -->
+    <h2>1. Реестр навыков (Lua Developer)</h2>
+    <p><em>Шкала: 1 – не владею, 2 – начальный, 3 – средний (применял в проектах), 4 – уверенный, 5 – эксперт.</em><br>
+    <strong>Инструкция:</strong> кликните на любую ячейку с оценкой или целевым уровнем, чтобы изменить значение.</p>
+    <table>
+        <thead>
+            <tr><th>Категория</th><th>Конкретные навыки</th><th style="width:12%">Моя оценка (1-5)</th><th style="width:12%">Целевой уровень (через 6 мес)</th></tr>
+        </thead>
+        <tbody>
+            <!-- Языки и парадигмы -->
+            <tr><td class="category-cell">Языки и парадигмы</td><td>Lua (синтаксис, таблицы, метатаблицы, замыкания, coroutines)</td><td class="editable-cell" contenteditable="true">2</td><td class="editable-cell" contenteditable="true">3</td></tr>
+            <tr><td class="category-cell">Языки и парадигмы</td><td>ООП через метатаблицы / прототипное наследование</td><td class="editable-cell" contenteditable="true">2</td><td class="editable-cell" contenteditable="true">3</td></tr>
+            <tr><td class="category-cell">Языки и парадигмы</td><td>Функциональное программирование (замыкания, функции высшего порядка)</td><td class="editable-cell" contenteditable="true">2</td><td class="editable-cell" contenteditable="true">3</td></tr>
+            <tr><td class="category-cell">Языки и парадигмы</td><td>Асинхронное программирование (корутины, event loop)</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
+            <!-- Архитектура и БД -->
+            <tr><td class="category-cell">Архитектура и БД</td><td>Алгоритмы и структуры данных (массивы, словари, очереди, графы)</td><td class="editable-cell" contenteditable="true">2</td><td class="editable-cell" contenteditable="true">3</td></tr>
+            <tr><td class="category-cell">Архитектура и БД</td><td>Паттерны проектирования (состояние, стратегия) на Lua</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
+            <tr><td class="category-cell">Архитектура и БД</td><td>Взаимодействие с БД (SQLite, LuaSQL, Redis + lua-resty)</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
+            <tr><td class="category-cell">Архитектура и БД</td><td>API design (REST через OpenResty)</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
+            <!-- Инструменты и практики -->
+            <tr><td class="category-cell">Инструменты и практики</td><td>Git / GitHub (ветки, pull requests)</td><td class="editable-cell" contenteditable="true">2</td><td class="editable-cell" contenteditable="true">3</td></tr>
+            <tr><td class="category-cell">Инструменты и практики</td><td>Docker (контейнеризация Lua/OpenResty)</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
+            <tr><td class="category-cell">Инструменты и практики</td><td>ОС Linux (командная строка, процессы)</td><td class="editable-cell" contenteditable="true">2</td><td class="editable-cell" contenteditable="true">3</td></tr>
+            <tr><td class="category-cell">Инструменты и практики</td><td>Написание тестов (busted, luatest)</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
+            <tr><td class="category-cell">Инструменты и практики</td><td>CI/CD (GitHub Actions для Lua)</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
+            <!-- Soft Skills -->
+            <tr><td class="category-cell">Soft Skills</td><td>Решение сложных задач (декомпозиция, поиск информации)</td><td class="editable-cell" contenteditable="true">2</td><td class="editable-cell" contenteditable="true">3</td></tr>
+            <tr><td class="category-cell">Soft Skills</td><td>Code Review (анализ Lua кода)</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
+            <tr><td class="category-cell">Soft Skills</td><td>Работа с легаси-кодом (рефакторинг)</td><td class="editable-cell" contenteditable="true">1</td><td class="editable-cell" contenteditable="true">2</td></tr>
+        </tbody>
+    </table>
 
-    <!-- ЧАСТЬ 2: ПЛАН РАЗВИТИЯ (ИПР) -->
-    <section>
-        <h2>📌 2. Индивидуальный план развития (6 месяцев)</h2>
-        <div class="table-wrapper">
-            <table class="plan-table">
-                <thead>
-                    <tr><th style="width: 18%">Навык</th><th style="width: 27%">Конкретная цель (измеримая)</th><th style="width: 27%">Шаги по развитию</th><th style="width: 15%">Ресурсы</th><th style="width: 13%">Срок</th></tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="editable-cell" contenteditable="true">Lua (метатаблицы + coroutines)</td>
-                        <td class="editable-cell" contenteditable="true">Написать Roguelike на Love2D с инвентарем (метатаблицы) и параллельными действиями (coroutines)</td>
-                        <td class="editable-cell" contenteditable="true">1. Изучить главы 13-20 "Programming in Lua". 2. Реализовать классы через метатаблицы. 3. Создать планировщик задач с корутинами. 4. Выложить код на GitHub</td>
-                        <td class="editable-cell" contenteditable="true">Книга PiL, Love2D wiki, YouTube (Lua tutorials)</td>
-                        <td class="editable-cell" contenteditable="true">2 месяца</td>
-                    </tr>
-                    <tr>
-                        <td class="editable-cell" contenteditable="true">Тестирование (busted)</td>
-                        <td class="editable-cell" contenteditable="true">Покрыть юнит-тестами ≥60% ключевой логики своего Roguelike</td>
-                        <td class="editable-cell" contenteditable="true">1. Изучить busted (установка, синтаксис assert). 2. Написать тесты для инвентаря и боевой системы. 3. Автоматизировать запуск через Makefile</td>
-                        <td class="editable-cell" contenteditable="true">Документация busted, open-source Lua проекты</td>
-                        <td class="editable-cell" contenteditable="true">1 месяц</td>
-                    </tr>
-                    <tr>
-                        <td class="editable-cell" contenteditable="true">Docker + OpenResty API</td>
-                        <td class="editable-cell" contenteditable="true">Создать микросервис с двумя эндпоинтами (/hello, /redis-set) на OpenResty + Lua + Redis</td>
-                        <td class="editable-cell" contenteditable="true">1. Изучить основы Docker и написать Dockerfile. 2. Поднять Redis через docker-compose. 3. Реализовать lua-resty-redis. 4. Протестировать через curl</td>
-                        <td class="editable-cell" contenteditable="true">Документация Docker, OpenResty, "OpenResty in Action"</td>
-                        <td class="editable-cell" contenteditable="true">2 месяца</td>
-                    </tr>
-                    <tr>
-                        <td class="editable-cell" contenteditable="true">Алгоритмы (Lua)</td>
-                        <td class="editable-cell" contenteditable="true">Решить 20 задач на Codewars (уровень 5-6 kyu) на чистом Lua</td>
-                        <td class="editable-cell" contenteditable="true">Еженедельно 1-2 задачи, разбирать лучшие решения, вести репозиторий с решениями</td>
-                        <td class="editable-cell" contenteditable="true">Codewars (фильтр Lua), LeetCode (адаптация)</td>
-                        <td class="editable-cell" contenteditable="true">3 месяца (параллельно)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="note">✏️ <strong>Редактируемый план:</strong> каждая ячейка текста доступна для изменения — подстройте цели, шаги и сроки под свою ситуацию.</div>
-    </section>
+    <!-- ЧАСТЬ 2: ПЛАН РАЗВИТИЯ -->
+    <h2>2. Индивидуальный план развития (6 месяцев)</h2>
+    <p><em>Фокус на критичные навыки для Junior Lua Developer.</em></p>
+    <table>
+        <thead>
+            <tr><th style="width:18%">Навык</th><th style="width:27%">Конкретная цель (измеримая)</th><th style="width:27%">Шаги по развитию</th><th style="width:15%">Ресурсы</th><th style="width:13%">Срок</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="editable-cell" contenteditable="true">Lua (метатаблицы + coroutines)</td>
+                <td class="editable-cell" contenteditable="true">Написать Roguelike на Love2D с инвентарём и параллельными действиями</td>
+                <td class="editable-cell" contenteditable="true">1. Изучить главы 13-20 "Programming in Lua". 2. Реализовать классы через метатаблицы. 3. Создать планировщик задач с корутинами. 4. Выложить код на GitHub.</td>
+                <td class="editable-cell" contenteditable="true">Книга PiL, Love2D wiki, Lua manual</td>
+                <td class="editable-cell" contenteditable="true">2 месяца</td>
+            </tr>
+            <tr>
+                <td class="editable-cell" contenteditable="true">Тестирование (busted)</td>
+                <td class="editable-cell" contenteditable="true">Покрыть юнит-тестами ≥60% ключевой логики своего проекта</td>
+                <td class="editable-cell" contenteditable="true">1. Изучить busted. 2. Написать тесты для инвентаря и боевой системы. 3. Автоматизировать запуск через Makefile.</td>
+                <td class="editable-cell" contenteditable="true">Документация busted, примеры open-source</td>
+                <td class="editable-cell" contenteditable="true">1 месяц</td>
+            </tr>
+            <tr>
+                <td class="editable-cell" contenteditable="true">Docker + OpenResty API</td>
+                <td class="editable-cell" contenteditable="true">Создать микросервис с эндпоинтами /hello и /redis-set на OpenResty + Lua + Redis</td>
+                <td class="editable-cell" contenteditable="true">1. Изучить основы Docker. 2. Написать Dockerfile. 3. Поднять Redis через docker-compose. 4. Использовать lua-resty-redis. 5. Протестировать curl.</td>
+                <td class="editable-cell" contenteditable="true">Документация Docker, OpenResty, статья "OpenResty in Action"</td>
+                <td class="editable-cell" contenteditable="true">2 месяца</td>
+            </tr>
+            <tr>
+                <td class="editable-cell" contenteditable="true">Алгоритмы (Lua)</td>
+                <td class="editable-cell" contenteditable="true">Решить 20 задач на Codewars (уровень 5-6 kyu) на чистом Lua</td>
+                <td class="editable-cell" contenteditable="true">Еженедельно 1-2 задачи, разбирать лучшие решения, вести репозиторий решений.</td>
+                <td class="editable-cell" contenteditable="true">Codewars (фильтр Lua), LeetCode</td>
+                <td class="editable-cell" contenteditable="true">3 месяца (параллельно)</td>
+            </tr>
+        </tbody>
+    </table>
 
-    <!-- БЛОК САМООЦЕНКИ (по критериям занятия) -->
-    <section>
-        <h2>🧩 3. Критерии самооценивания (1–5 баллов)</h2>
-        <div class="table-wrapper">
-            <table class="criteria-table">
-                <thead><tr><th>Критерий</th><th style="width: 25%">Моя оценка (1–5)</th></tr></thead>
-                <tbody>
-                    <tr><td>Полнота: насколько полно я проанализировал(а) свои навыки?</td><td class="editable-cell" contenteditable="true">4</td></tr>
-                    <tr><td>Реалистичность: насколько реалистичны и измеримы мои цели?</td><td class="editable-cell" contenteditable="true">5</td></tr>
-                    <tr><td>Конкретность плана: насколько конкретны мои шаги по развитию?</td><td class="editable-cell" contenteditable="true">5</td></tr>
-                    <tr><td>Осознанность: насколько я осознаю свои сильные стороны и «зоны роста»?</td><td class="editable-cell" contenteditable="true">4</td></tr>
-                    <tr><td>Рефлексия (качество обратной связи коллегам — заполняется после обсуждения)</td><td class="editable-cell" contenteditable="true">—</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-    
-    <div class="note" style="background: #e6f4ea;">
-        💡 <strong>Рекомендация:</strong> перед скачиванием проверьте, что все оценки и пункты плана отражают вашу персональную траекторию. Файл Word сохранит все таблицы с вашими правками.
+    <!-- ЧАСТЬ 3: САМООЦЕНКА -->
+    <h2>3. Критерии самооценивания (по 5-балльной шкале)</h2>
+    <table>
+        <thead><tr><th>Критерий</th><th style="width:20%">Оценка (1-5)</th></tr></thead>
+        <tbody>
+            <tr><td>Полнота: насколько полно я проанализировал(а) свои навыки?</td><td class="editable-cell" contenteditable="true">4</td></tr>
+            <tr><td>Реалистичность: насколько реалистичны и измеримы мои цели?</td><td class="editable-cell" contenteditable="true">5</td></tr>
+            <tr><td>Конкретность плана: насколько конкретны мои шаги по развитию?</td><td class="editable-cell" contenteditable="true">5</td></tr>
+            <tr><td>Осознанность: насколько я осознаю свои сильные стороны и «зоны роста»?</td><td class="editable-cell" contenteditable="true">4</td></tr>
+            <tr><td>Рефлексия: качество обратной связи коллегам (заполняется после обсуждения)</td><td class="editable-cell" contenteditable="true">—</td></tr>
+        </tbody>
+    </table>
+    <div class="note">
+        <strong>Примечание:</strong> Все ячейки с оценками, целями и шагами можно редактировать. После внесения изменений нажмите кнопку «Скачать в Word», чтобы сохранить готовый ИПР.
     </div>
 </div>
 
-<div class="btn-group">
-    <button class="btn btn-secondary" id="resetExampleBtn">⟳ Сбросить пример (Lua)</button>
-    <button class="btn btn-primary" id="downloadWordBtn">📎 Скачать в Word (.doc)</button>
+<div style="margin-top: 20px;">
+    <button class="btn" id="resetBtn">Восстановить пример (Lua)</button>
+    <button class="btn" id="downloadBtn">📄 Скачать в Word (.doc)</button>
 </div>
 <footer>
-    🧾 Индивидуальный план развития (ИПР) — формат: аудит навыков, измеримые шаги, экспорт в MS Word.<br>
-    * Все ячейки с бежевым фоном доступны для редактирования. После скачивания откройте файл в Word.
+    <hr>
+    * Открыть в Word: скачайте файл и откройте в Microsoft Word или LibreOffice. Все таблицы сохранят границы и редактируемый контент.
 </footer>
 
 <script>
-    // Функция экспорта в Word (сохраняет содержимое контейнера #exportContent)
+    // Функция экспорта в Word (без лишних стилей, только чистые таблицы)
     function exportToWord() {
-        // Получаем содержимое основного блока, который содержит все таблицы и заголовки
         const content = document.getElementById('exportContent').cloneNode(true);
-        // Удаляем из клона возможные динамические подсказки, которые не нужны в Word (кнопки внутри экспорта не планировались)
-        // но внутри контейнера нет кнопок, они снаружи. Дополнительно убираем любые лишние атрибуты для чистоты
-        // Также можно удалить классы для интерактива, но они не ломают Word.
-        // Обеспечим стили для печатной версии, добавим общие стили в сам blob
+        // Удаляем возможные кнопки из контейнера (их нет внутри exportContent, но на всякий случай)
+        // Получаем стили текущей страницы (минимальные)
         const styles = document.querySelector('style').innerHTML;
-        const meta = '<meta charset="UTF-8">';
-        const htmlContent = `
+        const docHtml = `
             <!DOCTYPE html>
             <html>
-            <head>${meta}<title>Individual_Plan_Lua_Developer</title>
-            <style>
-                body {
-                    font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
-                    margin: 30px 40px;
-                    padding: 0;
-                    color: #1e2a3a;
-                }
-                .container {
-                    max-width: 1200px;
-                    margin: 0 auto;
-                }
-                h1 { color: #1f6e82; font-size: 26pt; }
-                h2 { color: #0f4c5c; border-bottom: 2px solid #9bb7c4; padding-bottom: 5px; margin-top: 25px; }
-                table {
-                    border-collapse: collapse;
-                    width: 100%;
-                    margin-bottom: 20px;
-                    page-break-inside: avoid;
-                }
-                th {
-                    background: #e1eef3;
-                    border: 1px solid #a5bfcc;
-                    padding: 8px 10px;
-                    font-weight: bold;
-                }
-                td {
-                    border: 1px solid #cbdbe0;
-                    padding: 8px 10px;
-                    vertical-align: top;
-                }
-                .category-cell { background: #f4f9fc; font-weight: 600; }
-                .editable-cell { background: #fffcf0; }
-                .note { margin: 10px 0; font-size: 11pt; color: #2c5c6e; }
-                .badge-lua { background: #1f6e82; color: white; display: inline-block; padding: 2px 12px; border-radius: 20px; font-size: 10pt; }
-                .subhead { color: #2c6979; margin-bottom: 20px; }
-                .btn-group, footer, .btn { display: none; }
-            </style>
+            <head>
+                <meta charset="UTF-8">
+                <title>IPR_Rechkunov_Lua.doc</title>
+                <style>
+                    /* стили для Word - простые таблицы, чёрные границы */
+                    body {
+                        font-family: 'Times New Roman', Times, serif;
+                        margin: 2cm;
+                        background: white;
+                        color: black;
+                    }
+                    table {
+                        border-collapse: collapse;
+                        width: 100%;
+                        margin-bottom: 20px;
+                    }
+                    th, td {
+                        border: 1px solid black;
+                        padding: 6px 8px;
+                        vertical-align: top;
+                    }
+                    th {
+                        background: #f0f0f0;
+                    }
+                    .editable-cell {
+                        background: white;
+                    }
+                    h1, h2 {
+                        margin-top: 20px;
+                    }
+                    .note {
+                        margin: 12px 0;
+                    }
+                    .btn, #resetBtn, #downloadBtn, footer button {
+                        display: none;
+                    }
+                </style>
             </head>
             <body>
-            <div class="container">
                 ${content.innerHTML}
-            </div>
             </body>
             </html>
         `;
-        // Убираем кнопки из самого экспорта (если вдруг внутри оказались кнопки или скрипты)
-        // Поскольку блок exportContent не содержит кнопок экспорта — чисто.
-        const blob = new Blob([htmlContent], { type: 'application/msword' });
+        const blob = new Blob([docHtml], { type: 'application/msword' });
         const link = document.createElement('a');
         const url = URL.createObjectURL(blob);
         link.href = url;
-        link.download = 'IPR_Lua_Developer.doc';
+        link.download = 'IPR_Rechkunov_Andrey.doc';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
     }
 
-    // Функция сброса к исходным данным (пример для Lua разработчика)
-    function resetToExample() {
-        // Сброс таблицы навыков
-        const skillsRows = document.querySelectorAll('#skillsTable tbody tr');
-        const defaultSkillsData = [
-            ["2","3"], ["2","3"], ["2","3"], ["1","2"],
-            ["2","3"], ["1","2"], ["1","2"], ["1","2"],
-            ["2","3"], ["1","2"], ["2","3"], ["1","2"], ["1","2"],
-            ["2","3"], ["1","2"], ["1","2"]
+    // Сброс к исходным данным (пример для Lua)
+    function resetToDefault() {
+        // Сброс таблицы навыков (16 строк)
+        const skillRows = document.querySelectorAll('#exportContent table:first-of-type tbody tr');
+        const defaultSkills = [
+            ["2","3"],["2","3"],["2","3"],["1","2"],
+            ["2","3"],["1","2"],["1","2"],["1","2"],
+            ["2","3"],["1","2"],["2","3"],["1","2"],["1","2"],
+            ["2","3"],["1","2"],["1","2"]
         ];
-        for (let i = 0; i < skillsRows.length && i < defaultSkillsData.length; i++) {
-            const cells = skillsRows[i].querySelectorAll('.editable-cell');
-            if (cells.length >= 2) {
-                cells[0].innerText = defaultSkillsData[i][0];
-                cells[1].innerText = defaultSkillsData[i][1];
+        for(let i=0; i<skillRows.length && i<defaultSkills.length; i++) {
+            const editable = skillRows[i].querySelectorAll('.editable-cell');
+            if(editable.length >=2) {
+                editable[0].innerText = defaultSkills[i][0];
+                editable[1].innerText = defaultSkills[i][1];
             }
         }
-        
-        // Сброс таблицы плана развития (4 строки)
-        const planRows = document.querySelectorAll('.plan-table tbody tr');
-        const defaultPlan = [
-            ["Lua (метатаблицы + coroutines)", "Написать Roguelike на Love2D с инвентарем (метатаблицы) и параллельными действиями (coroutines)", "1. Изучить главы 13-20 \"Programming in Lua\". 2. Реализовать классы через метатаблицы. 3. Создать планировщик задач с корутинами. 4. Выложить код на GitHub", "Книга PiL, Love2D wiki, YouTube (Lua tutorials)", "2 месяца"],
-            ["Тестирование (busted)", "Покрыть юнит-тестами ≥60% ключевой логики своего Roguelike", "1. Изучить busted (установка, синтаксис assert). 2. Написать тесты для инвентаря и боевой системы. 3. Автоматизировать запуск через Makefile", "Документация busted, open-source Lua проекты", "1 месяц"],
-            ["Docker + OpenResty API", "Создать микросервис с двумя эндпоинтами (/hello, /redis-set) на OpenResty + Lua + Redis", "1. Изучить основы Docker и написать Dockerfile. 2. Поднять Redis через docker-compose. 3. Реализовать lua-resty-redis. 4. Протестировать через curl", "Документация Docker, OpenResty, \"OpenResty in Action\"", "2 месяца"],
-            ["Алгоритмы (Lua)", "Решить 20 задач на Codewars (уровень 5-6 kyu) на чистом Lua", "Еженедельно 1-2 задачи, разбирать лучшие решения, вести репозиторий с решениями", "Codewars (фильтр Lua), LeetCode (адаптация)", "3 месяца (параллельно)"]
-        ];
-        for (let i = 0; i < planRows.length && i < defaultPlan.length; i++) {
-            const editableCells = planRows[i].querySelectorAll('.editable-cell');
-            if (editableCells.length >= 5) {
-                editableCells[0].innerText = defaultPlan[i][0];
-                editableCells[1].innerText = defaultPlan[i][1];
-                editableCells[2].innerText = defaultPlan[i][2];
-                editableCells[3].innerText = defaultPlan[i][3];
-                editableCells[4].innerText = defaultPlan[i][4];
-            }
-        }
-        
-        // Сброс таблицы самооценки (5 критериев) - значения по умолчанию: 4,5,5,4,—
-        const criteriaRows = document.querySelectorAll('.criteria-table tbody tr');
-        if (criteriaRows.length >= 5) {
-            const defaultCriteria = ["4", "5", "5", "4", "—"];
-            for (let i = 0; i < criteriaRows.length; i++) {
-                const evalCell = criteriaRows[i].querySelector('.editable-cell');
-                if (evalCell && defaultCriteria[i] !== undefined) {
-                    evalCell.innerText = defaultCriteria[i];
+        // Сброс таблицы плана (4 строки, каждая с 5 редактируемыми ячейками)
+        const planTables = document.querySelectorAll('#exportContent table');
+        if(planTables.length >= 2) {
+            const planRows = planTables[1].querySelectorAll('tbody tr');
+            const defaultPlan = [
+                ["Lua (метатаблицы + coroutines)","Написать Roguelike на Love2D с инвентарём и параллельными действиями","1. Изучить главы 13-20 \"Programming in Lua\". 2. Реализовать классы через метатаблицы. 3. Создать планировщик задач с корутинами. 4. Выложить код на GitHub.","Книга PiL, Love2D wiki, Lua manual","2 месяца"],
+                ["Тестирование (busted)","Покрыть юнит-тестами ≥60% ключевой логики своего проекта","1. Изучить busted. 2. Написать тесты для инвентаря и боевой системы. 3. Автоматизировать запуск через Makefile.","Документация busted, примеры open-source","1 месяц"],
+                ["Docker + OpenResty API","Создать микросервис с эндпоинтами /hello и /redis-set на OpenResty + Lua + Redis","1. Изучить основы Docker. 2. Написать Dockerfile. 3. Поднять Redis через docker-compose. 4. Использовать lua-resty-redis. 5. Протестировать curl.","Документация Docker, OpenResty, статья \"OpenResty in Action\"","2 месяца"],
+                ["Алгоритмы (Lua)","Решить 20 задач на Codewars (уровень 5-6 kyu) на чистом Lua","Еженедельно 1-2 задачи, разбирать лучшие решения, вести репозиторий решений.","Codewars (фильтр Lua), LeetCode","3 месяца (параллельно)"]
+            ];
+            for(let i=0; i<planRows.length && i<defaultPlan.length; i++) {
+                const editableCells = planRows[i].querySelectorAll('.editable-cell');
+                for(let j=0; j<editableCells.length && j<defaultPlan[i].length; j++) {
+                    editableCells[j].innerText = defaultPlan[i][j];
                 }
             }
         }
-        
-        // Дополнительно: если нужно сбросить также заметки, но все успешно
-        const noteMsg = document.querySelector('.note:last-of-type');
-        if(noteMsg) noteMsg.style.background = "#e6f4ea";
+        // Сброс таблицы самооценки (последняя таблица, 5 строк)
+        const allTables = document.querySelectorAll('#exportContent table');
+        if(allTables.length >= 3) {
+            const criteriaRows = allTables[2].querySelectorAll('tbody tr');
+            const defaultCriteria = ["4","5","5","4","—"];
+            for(let i=0; i<criteriaRows.length && i<defaultCriteria.length; i++) {
+                const cell = criteriaRows[i].querySelector('.editable-cell');
+                if(cell) cell.innerText = defaultCriteria[i];
+            }
+        }
     }
 
-    // инициализация событий
-    document.getElementById('downloadWordBtn').addEventListener('click', exportToWord);
-    document.getElementById('resetExampleBtn').addEventListener('click', resetToExample);
-    
-    // Убедимся что все ячейки с классом editable-cell имеют атрибут contenteditable
-    // (уже есть в разметке, но продублируем для безопасности динамических добавлений)
-    document.querySelectorAll('.editable-cell').forEach(cell => {
-        if (!cell.hasAttribute('contenteditable')) {
-            cell.setAttribute('contenteditable', 'true');
-        }
-    });
+    document.getElementById('downloadBtn').addEventListener('click', exportToWord);
+    document.getElementById('resetBtn').addEventListener('click', resetToDefault);
 </script>
 </body>
 </html>
